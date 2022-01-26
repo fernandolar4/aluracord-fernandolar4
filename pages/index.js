@@ -139,13 +139,13 @@ export default function PaginaInicial() {
             ></input> */}
 
             <TextField
-             type="text"
+              type="text"
               value={username}
               onChange={function (event) {
                 console.log("usuario digitou", event.target.value);
                 //Onde está o valor"?
                 const valor = event.target.value;
-                //trocar o valor da variável
+                //trocar o valor da variável através do react e avisa pra quem precisa
                 setUsername(valor);
               }}
               fullWidth
