@@ -92,11 +92,11 @@ export default function PaginaInicial() {
             },
             width: "100%",
             maxWidth: "700px",
-            borderRadius: "5px",
+            borderRadius: "0px 50px 0px 50px",
             padding: "32px",
             margin: "16px",
             boxShadow: "0 2px 10px 0 rgb(0 0 0 / 20%)",
-            backgroundColor: appConfig.theme.colors.neutrals[700],
+            backgroundColor: appConfig.theme.colors.neutrals[900],
           }}
         >
           {/* Formulário */}
@@ -157,8 +157,8 @@ export default function PaginaInicial() {
               maxWidth: "200px",
               padding: "16px",
               backgroundColor: appConfig.theme.colors.neutrals[800],
-              border: "1px solid",
-              borderColor: appConfig.theme.colors.neutrals[999],
+              border: "1px solid ",
+              borderColor: appConfig.theme.colors.primary[800],
               borderRadius: "10px",
               flex: 1,
               minHeight: "240px",
@@ -177,7 +177,7 @@ export default function PaginaInicial() {
                 color: appConfig.theme.colors.neutrals[200],
                 backgroundColor: appConfig.theme.colors.neutrals[900],
                 padding: "3px 10px",
-                borderRadius: "1000px",
+                borderRadius: "10%",
               }}
             >
               {username}
