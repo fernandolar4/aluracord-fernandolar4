@@ -1,40 +1,9 @@
 import { Box, Button, Text, TextField, Image } from "@skynexui/components";
 import appConfig from "../config.json";
+import { useRouter } from "next/router";
 import React from "react";
 
-function GlobalStyle() {
-  return (
-    <style global jsx>{`
-      * {
-        margin: 0;
-        padding: 0;
-        box-sizing: border-box;
-        list-style: none;
-      }
-      body {
-        font-family: "Open Sans", sans-serif;
-      }
-      /* App fit Height */
-      html,
-      body,
-      #__next {
-        min-height: 100vh;
-        display: flex;
-        flex: 1;
-      }
-      #__next {
-        flex: 1;
-      }
-      #__next > * {
-        flex: 1;
-      }
-      /* ./App fit Height */
-    `}</style>
-  );
-}
-
 function Titulo(props) {
-  console.log(props);
   const Tag = props.tag || "h1";
   return (
     <>
@@ -67,11 +36,12 @@ function Titulo(props) {
 export default function PaginaInicial() {
   // const username = "fernandolar4";
   // VALOR QUE VEMOS \\ QUEM DEVEMOS ATUALIZAR PARA QUE A PÁGINA MOSTRE ESSE VALOR
+  //SETUSERNAME = HOOK
   const [username, setUsername] = React.useState("GitHub");
+  const roteamento = useRouter();
 
   return (
     <>
-      <GlobalStyle />
       <Box
         styleSheet={{
           display: "flex",
@@ -105,6 +75,10 @@ export default function PaginaInicial() {
           {/* Formulário */}
           <Box
             as="form"
+            onSubmit={function (infosDoEvento) {
+              infosDoEvento.preventDefault();
+              roteamento.push("/chat");
+            }}
             styleSheet={{
               display: "flex",
               flexDirection: "column",
@@ -130,19 +104,21 @@ export default function PaginaInicial() {
               type="text"
               value={username}
               onChange={function (event) {
-                console.log("usuario digitou", event.target.value);
+                console.log("usuário digitou", event.target.value);
                 //Onde está o valor"?
                 const valor = event.target.value;
                 //trocar o valor da variável
                 setUsername(valor);
               }}
-            ></input> */}
+            ></input>
+            INPUT === TEXTFIELD
+             */}
 
             <TextField
               type="text"
               value={username}
               onChange={function (event) {
-                console.log("usuario digitou", event.target.value);
+                console.log("usuário digitou", event.target.value);
                 //Onde está o valor"?
                 const valor = event.target.value;
                 //trocar o valor da variável através do react e avisa pra quem precisa
