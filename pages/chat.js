@@ -9,15 +9,15 @@ export default function ChatPage() {
   // adicionar o texto na lista
 
   const [mensagem, setMensagem] = React.useState("");
-  const [listaDeMensagem, setListaDeMensagem] = React.useState([]);
+  const [listaDeMensagens, setListaDeMensagens] = React.useState([]);
 
   function handleNovaMensagem(novaMensagem) {
     const mensagem = {
       texto: novaMensagem,
       de: "exemplo",
-      id: listaDeMensagem.length + 1,
+      id: listaDeMensagens.length + 1,
     };
-    setListaDeMensagem([mensagem, ...listaDeMensagem]);
+    setListaDeMensagens([mensagem, ...listaDeMensagens]);
     setMensagem("");
   }
 
@@ -62,7 +62,7 @@ export default function ChatPage() {
             padding: "16px",
           }}
         >
-          <MessageList mensagens={listaDeMensagem} />
+          <MessageList mensagens={listaDeMensagens} />
 
           {/* {listaDeMensagem.map((mensagemAtual) => {
             return (
@@ -149,7 +149,7 @@ function MessageList(props) {
         // overflow: "hidden",
         // textOverflow: "ellipsis",
         // whiteSpace: "nowrap",
-        //COMO MELHORAR A QUEBRA DE MENSAGENS AQUI!!! 
+        //COMO MELHORAR A QUEBRA DE MENSAGENS AQUI!!!
       }}
     >
       {props.mensagens.map((mensagem) => {

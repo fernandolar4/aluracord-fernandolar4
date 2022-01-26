@@ -38,7 +38,7 @@ export default function PaginaInicial() {
   // VALOR QUE VEMOS \\ QUEM DEVEMOS ATUALIZAR PARA QUE A PÁGINA MOSTRE ESSE VALOR
   //SETUSERNAME = HOOK
 
-  const [username, setUsername] = React.useState("GitHub"); 
+  const [username, setUsername] = React.useState("GitHub");
   const roteamento = useRouter();
 
   return (
