@@ -149,6 +149,7 @@ function MessageList(props) {
         // overflow: "hidden",
         // textOverflow: "ellipsis",
         // whiteSpace: "nowrap",
+        //COMO MELHORAR A QUEBRA DE MENSAGENS AQUI!!! 
       }}
     >
       {props.mensagens.map((mensagem) => {
