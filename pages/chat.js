@@ -161,11 +161,13 @@ function MessageList(props) {
             key={mensagem.id}
             tag="li"
             styleSheet={{
-              borderRadius: "5px",
-              padding: "6px",
+              borderRadius: "25px 0px 0px 0px",
+              padding: "10px",
               marginBottom: "12px",
+              transition: "0.5s",
               hover: {
-                backgroundColor: appConfig.theme.colors.neutrals[800],
+      
+                backgroundColor: appConfig.theme.colors.primary[800],
               },
             }}
           >
