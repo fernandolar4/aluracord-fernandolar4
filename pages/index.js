@@ -146,6 +146,23 @@ export default function PaginaInicial() {
                 mainColorStrong: appConfig.theme.colors.primary[600],
               }}
             />
+            <Text
+              styleSheet={{
+                display: "flex",
+                color: appConfig.theme.colors.primary[500],
+                alignItems: "center",
+                justifyContent: "center",
+                textDecoration: "none",
+                marginTop: "32px",
+              }}
+            >
+              Coded by:
+              {
+                <a href="https://www.linkedin.com/in/fernando-lara-701103119/">
+                  Fernando Antonio Lara Maia
+                </a>
+              }
+            </Text>
           </Box>
           {/* Formulário */}
 

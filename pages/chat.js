@@ -166,7 +166,6 @@ function MessageList(props) {
               marginBottom: "12px",
               transition: "0.5s",
               hover: {
-      
                 backgroundColor: appConfig.theme.colors.primary[800],
               },
             }}
