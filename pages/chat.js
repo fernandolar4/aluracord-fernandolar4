@@ -32,7 +32,7 @@ export default function ChatPage() {
         backgroundRepeat: "no-repeat",
         backgroundSize: "cover",
         backgroundBlendMode: "multiply",
-        color: appConfig.theme.colors.neutrals["000"],
+        color: appConfig.theme.colors.primary["400"],
       }}
     >
       <Box
@@ -42,7 +42,7 @@ export default function ChatPage() {
           flex: 1,
           boxShadow: "0 2px 10px 0 rgb(0 0 0 / 20%)",
           borderRadius: "5px",
-          backgroundColor: appConfig.theme.colors.neutrals[700],
+          backgroundColor: appConfig.theme.colors.neutrals[800],
           height: "100%",
           maxWidth: "95%",
           maxHeight: "95vh",
@@ -56,10 +56,11 @@ export default function ChatPage() {
             display: "flex",
             flex: 1,
             height: "80%",
-            backgroundColor: appConfig.theme.colors.neutrals[600],
+            backgroundColor: appConfig.theme.colors.neutrals[900],
             flexDirection: "column",
             borderRadius: "5px",
             padding: "16px",
+            maxWidth: "95vw"
           }}
         >
           <MessageList mensagens={listaDeMensagens} />
@@ -116,6 +117,7 @@ function Header() {
       <Box
         styleSheet={{
           width: "100%",
+          maxWidth: "100%",
           marginBottom: "16px",
           display: "flex",
           alignItems: "center",
@@ -140,7 +142,7 @@ function MessageList(props) {
     <Box
       tag="ul"
       styleSheet={{
-        overflow: "scroll",
+        overflowWrap: "break-word",
         display: "flex",
         flexDirection: "column-reverse",
         flex: 1,
@@ -162,7 +164,7 @@ function MessageList(props) {
               padding: "6px",
               marginBottom: "12px",
               hover: {
-                backgroundColor: appConfig.theme.colors.neutrals[700],
+                backgroundColor: appConfig.theme.colors.neutrals[800],
               },
             }}
           >
@@ -184,7 +186,7 @@ function MessageList(props) {
               <Text tag="strong">{mensagem.de}</Text>
               <Text
                 styleSheet={{
-                  fontSize: "10px",
+                  fontSize: "12px",
                   marginLeft: "8px",
                   color: appConfig.theme.colors.neutrals[300],
                 }}
