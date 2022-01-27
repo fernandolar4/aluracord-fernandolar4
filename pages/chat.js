@@ -60,7 +60,7 @@ export default function ChatPage() {
             flexDirection: "column",
             borderRadius: "5px",
             padding: "16px",
-            maxWidth: "95vw"
+            maxWidth: "95vw",
           }}
         >
           <MessageList mensagens={listaDeMensagens} />
@@ -143,12 +143,13 @@ function MessageList(props) {
       tag="ul"
       styleSheet={{
         overflowWrap: "break-word",
+        overflowY: "auto",
         display: "flex",
         flexDirection: "column-reverse",
         flex: 1,
         color: appConfig.theme.colors.neutrals["000"],
         marginBottom: "16px",
-        // overflow: "hidden",
+        // overflow: "hidden",secondarysecondary
         // textOverflow: "ellipsis",
         // whiteSpace: "nowrap",
         //COMO MELHORAR A QUEBRA DE MENSAGENS AQUI!!!
