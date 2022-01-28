@@ -6,6 +6,8 @@ import { useRouter } from "next/router";
 import { ButtonSendSticker } from "../src/components/ButtonSendSticker";
 //import Autolinker from "autolinker";
 
+
+//TO DO: ADD .env para esconder as chaves
 const SUPABASE_ANON_KEY =
   "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJyb2xlIjoiYW5vbiIsImlhdCI6MTY0MzMxMDQ4OSwiZXhwIjoxOTU4ODg2NDg5fQ.dKJy2b7SllW5xsHH0dB0TVJJt2KGSZvV-QejyOQL1Uo";
 const SUPABASE_URL = "https://jcgpdmcqyqikbvyjlwof.supabase.co";
