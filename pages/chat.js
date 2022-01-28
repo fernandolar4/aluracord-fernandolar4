@@ -4,11 +4,22 @@ import appConfig from "../config.json";
 import { createClient } from "@supabase/supabase-js";
 import { useRouter } from "next/router";
 import { ButtonSendSticker } from "../src/components/ButtonSendSticker";
+//import Autolinker from "autolinker";
 
 const SUPABASE_ANON_KEY =
   "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJyb2xlIjoiYW5vbiIsImlhdCI6MTY0MzMxMDQ4OSwiZXhwIjoxOTU4ODg2NDg5fQ.dKJy2b7SllW5xsHH0dB0TVJJt2KGSZvV-QejyOQL1Uo";
 const SUPABASE_URL = "https://jcgpdmcqyqikbvyjlwof.supabase.co";
 const supabaseClient = createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+
+function escutaMensagensEmTempoReal(adicionaMensagem) {
+  return supabaseClient
+    .from("mensagens")
+    .on("INSERT", (respostaLive) => {
+      // console.log("nova msg");
+      adicionaMensagem(respostaLive.new);
+    })
+    .subscribe();
+}
 
 export default function ChatPage() {
   const roteamento = useRouter();
@@ -24,6 +35,8 @@ export default function ChatPage() {
     // },
   ]);
 
+  // const Autolinker = require("autolinker");
+
   React.useEffect(() => {
     supabaseClient
       .from("mensagens")
@@ -33,6 +46,11 @@ export default function ChatPage() {
         console.log("Dados da consulta:", data);
         setListaDeMensagens(data);
       });
+    escutaMensagensEmTempoReal((novaMensagem) => {
+      setListaDeMensagens((valorAtualDaLista) => {
+        return [novaMensagem, ...valorAtualDaLista];
+      });
+    });
   }, []);
 
   function handleNovaMensagem(novaMensagem) {
@@ -49,8 +67,7 @@ export default function ChatPage() {
         mensagem,
       ])
       .then(({ data }) => {
-        console.log("Criando mensagem: ", data);
-        setListaDeMensagens([data[0], ...listaDeMensagens]);
+        // console.log("Criando mensagem: ", data);
       });
 
     setMensagem("");
@@ -139,7 +156,12 @@ export default function ChatPage() {
                 color: appConfig.theme.colors.neutrals[200],
               }}
             />
-            <ButtonSendSticker />
+            <ButtonSendSticker
+              onStickerClick={(sticker) => {
+                handleNovaMensagem(":sticker:" + sticker);
+                // console.log("usando o componente sticker");
+              }}
+            />
           </Box>
         </Box>
       </Box>
@@ -238,6 +260,7 @@ function MessageList(props) {
               <Image src={mensagem.texto.replace(":sticker:", "")} />
             ) : (
               mensagem.texto
+              // TO DO:::::::::::::::: Autolinker.link(mensagem.texto)
             )}
           </Text>
         );
