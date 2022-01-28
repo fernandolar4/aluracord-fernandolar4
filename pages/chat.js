@@ -7,7 +7,7 @@ import { ButtonSendSticker } from "../src/components/ButtonSendSticker";
 import { GetServerSideProps } from "next";
 
 //import Autolinker from "autolinker";
-
+// // // // // // // / // / // / // 
 const ChatPage = ({ SUPABASE_ANON_KEY, SUPABASE_URL }) => {
   const supabaseClient = createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
   const roteamento = useRouter();
