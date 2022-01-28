@@ -8,11 +8,6 @@ import { GetServerSideProps } from "next";
 
 //import Autolinker from "autolinker";
 
-//TO DO: ADD .env para esconder as chaves
-// const SUPABASE_ANON_KEY =
-//   "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJyb2xlIjoiYW5vbiIsImlhdCI6MTY0MzMxMDQ4OSwiZXhwIjoxOTU4ODg2NDg5fQ.dKJy2b7SllW5xsHH0dB0TVJJt2KGSZvV-QejyOQL1Uo";
-// const SUPABASE_URL = "https://jcgpdmcqyqikbvyjlwof.supabase.co";
-
 const ChatPage = ({ SUPABASE_ANON_KEY, SUPABASE_URL }) => {
   const supabaseClient = createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
   const roteamento = useRouter();
