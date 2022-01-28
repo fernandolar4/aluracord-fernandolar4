@@ -2,6 +2,8 @@ import { Box, Text, TextField, Image, Button } from "@skynexui/components";
 import React from "react";
 import appConfig from "../config.json";
 import { createClient } from "@supabase/supabase-js";
+import { useRouter } from "next/router";
+import { ButtonSendSticker } from "../src/components/ButtonSendSticker";
 
 const SUPABASE_ANON_KEY =
   "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJyb2xlIjoiYW5vbiIsImlhdCI6MTY0MzMxMDQ4OSwiZXhwIjoxOTU4ODg2NDg5fQ.dKJy2b7SllW5xsHH0dB0TVJJt2KGSZvV-QejyOQL1Uo";
@@ -9,13 +11,18 @@ const SUPABASE_URL = "https://jcgpdmcqyqikbvyjlwof.supabase.co";
 const supabaseClient = createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
 
 export default function ChatPage() {
-  // Usuário
-  // textarea para digitar a msg
-  // enter para enviar
-  // adicionar o texto na lista
+  const roteamento = useRouter();
+  const usuarioLogado = roteamento.query.username;
 
   const [mensagem, setMensagem] = React.useState("");
-  const [listaDeMensagens, setListaDeMensagens] = React.useState([]);
+  const [listaDeMensagens, setListaDeMensagens] = React.useState([
+    // {
+    //   id: 1,
+    //   de: "fernandolar4",
+    //   texto:
+    //     ":sticker:https://media.discordapp.net/attachments/933812402229772338/936643868483551282/pogchamp.png",
+    // },
+  ]);
 
   React.useEffect(() => {
     supabaseClient
@@ -31,7 +38,7 @@ export default function ChatPage() {
   function handleNovaMensagem(novaMensagem) {
     const mensagem = {
       // id: listaDeMensagens.length + 1,
-      de: "vanessametonini",
+      de: usuarioLogado,
       texto: novaMensagem,
     };
 
@@ -132,6 +139,7 @@ export default function ChatPage() {
                 color: appConfig.theme.colors.neutrals[200],
               }}
             />
+            <ButtonSendSticker />
           </Box>
         </Box>
       </Box>
@@ -225,7 +233,12 @@ function MessageList(props) {
                 {new Date().toLocaleDateString()}
               </Text>
             </Box>
-            {mensagem.texto}
+            {/* DECLARATIVO */}
+            {mensagem.texto.startsWith(":sticker:") ? (
+              <Image src={mensagem.texto.replace(":sticker:", "")} />
+            ) : (
+              mensagem.texto
+            )}
           </Text>
         );
       })}
