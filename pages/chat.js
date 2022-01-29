@@ -7,15 +7,9 @@ import { ButtonSendSticker } from "../src/components/ButtonSendSticker";
 import { GetServerSideProps } from "next";
 
 //import Autolinker from "autolinker";
-// // // // // // // / // / // / //
-const ChatPage = ({
-  NEXT_PUBLIC_SUPABASE_ANON_KEY,
-  NEXT_PUBLIC_SUPABASE_URL,
-}) => {
-  const supabaseClient = createClient(
-    NEXT_PUBLIC_SUPABASE_URL,
-    NEXT_PUBLIC_SUPABASE_ANON_KEY
-  );
+// // // // // // // /
+const ChatPage = ({ SUPABASE_ANON_KEY, SUPABASE_URL }) => {
+  const supabaseClient = createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
   const roteamento = useRouter();
   const usuarioLogado = roteamento.query.username;
 
@@ -267,13 +261,12 @@ function MessageList(props) {
 }
 
 export const getServerSideProps = async () => {
-  const { NEXT_PUBLIC_SUPABASE_ANON_KEY, NEXT_PUBLIC_SUPABASE_URL } =
-    process.env;
+  const { SUPABASE_ANON_KEY, SUPABASE_URL } = process.env;
 
   return {
     props: {
-      NEXT_PUBLIC_SUPABASE_ANON_KEY,
-      NEXT_PUBLIC_SUPABASE_URL,
+      SUPABASE_ANON_KEY,
+      SUPABASE_URL,
     },
   };
 };
