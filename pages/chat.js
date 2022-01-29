@@ -260,7 +260,7 @@ function MessageList(props) {
   );
 }
 
-export const getServerSideProps = async () => {
+export const GetServerSideProps = async () => {
   const { SUPABASE_ANON_KEY, SUPABASE_URL } = process.env;
 
   return {
